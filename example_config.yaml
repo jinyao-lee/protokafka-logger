@@ -1,0 +1,23 @@
+consumer:
+  # Consumer group ID
+  groupID: headache
+  # Whether to append service start time to consumer group ID.
+  # If true, consumer group ID will be that of the form: <groupID>-<serviceStartTime>
+  # This ensures that if we restart the service with consumeFromOldest flag enabled, we will not be consuming
+  #  from the same offset.
+  withStartTimeSuffix: true
+  # Whether to consume from the oldest offset or the newest offset if the initial committed offset by the consumer
+  # group ID is not found.
+  consumeFromOldest: true
+
+# List of topics to subscribe to.
+topics:
+  # Topic name
+  - name: sample-topic-name
+    # List of brokers to connect to
+    brokers:
+      - localhost:9092
+    # Path to the schema file.
+    schemaLocation: /Users/james/Repositories/kafka-logger/example-service/pb/example.proto
+    # Struct name of the schema that messages coming in should be deserialized into.
+    structName: MySampleKafkaMessage

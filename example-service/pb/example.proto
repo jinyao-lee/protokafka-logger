@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package my.package;
+
+option go_package = "github.com/jinyao-lee/kafka-logger/example-service/pb";
+
+enum ContactType {
+    UNKNOWN = 0;
+    EMAIL = 1;
+    PHONE = 2;
+}
+
+message MySampleKafkaMessage {
+    string first_name = 1;
+    string last_name = 2;
+    repeated Contact contacts = 3;
+    uint32 lucky_number = 4;
+}
+
+message Contact {
+    ContactType contact_type = 1;
+    string value = 2;
+}
